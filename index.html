@@ -1,73 +1,371 @@
 ‎<!DOCTYPE html>
-‎<html>
-‎<head>
-‎    <title>My Personal Profile</title>
-‎</head>
-‎<body>
-‎
-‎    <h1>Jan Laurence</h1>
-‎
-‎    <h2>Personal Information</h2>
-‎    <p>
-‎        My name is <b>Jan Laurence</b>.<br>
-‎        I am a <u>Grade 11</u> student.<br>
-‎        I am passionate about learning programming and improving my skills every day.
-‎    </p>
-‎q
-‎    <hr>
-‎
-‎    <h2>About Me</h2>
-‎    <p>
-‎        I am a <i>determined</i> and hardworking student. I enjoy learning new things,
-‎        especially about technology and web development. I believe that every small
-‎        step I take today will help me achieve my dreams in the future.
-‎    </p>
-‎
-‎    <h2>My Hobbies and Interests</h2>
-‎    <p>
-‎        My hobbies include playing online games, listening to music,
-‎        watching programming tutorials, and spending time improving my coding skills.
-‎    </p>
-‎
-‎    <h2>My Favorite Things</h2>
-‎    <p>
-‎        My favorite subject is <b>Computer Programming</b>.
-‎        Water is written as H<sub>2</sub>O, and a sample mathematical expression is x<sup>2</sup>.
-‎    </p>
-‎
-‎    <hr>
-‎
-‎    <h2>My Educational Goals</h2>
-‎    <p>
-‎        My goal is to become more confident in coding HTML, CSS, and JavaScript.
-‎        I want to continue learning until I become a skilled programmer.
-‎    </p>
-‎
-‎    <h2>My Dream Career</h2>
-‎    <p>
-‎        My dream career is to become a <b>Software Developer</b>.
-‎        I want to create useful websites and applications that can help people.
-‎    </p>
-‎
-‎    <h2>Fun Facts About Me</h2>
-‎    <p>
-‎        I enjoy solving computer problems, learning new coding techniques,
-‎        and challenging myself to become a better version every day.
-‎    </p>
-‎
-‎    <h2>My Personal Motto</h2>
-‎    <p>
-‎        <i>"Success comes from consistency, not perfection."</i>
-‎    </p>
-‎
-‎    <hr>
-‎
-‎    <h2>End of Profile</h2>
-‎    <p>
-‎        Thank you for taking the time to read my personal profile.
-‎        Have a wonderful day!
-‎    </p>
-‎
-‎</body>
-‎</html>
-‎
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Me</title>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+        emailjs.init({
+            publicKey: "d2qtMLP2W8dQh0WOk"
+        });
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 30px 15px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        /* Navigation */
+        nav {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 6px;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* Glass Card */
+        .contact-card {
+            width: 100%;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .contact-card h2 {
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        .contact-card p {
+            margin-bottom: 25px;
+            color: #ffffff;
+            opacity: 0.75;
+            font-size: 14px;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Gender */
+        .gender-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .gender-options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: normal;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .gender-options input {
+            width: auto;
+            accent-color: #38bdf8;
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .send-btn {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .clear-btn {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px 12px;
+            }
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            nav {
+                line-height: 2;
+            }
+
+            .contact-card {
+                padding: 22px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Contact Me</h1>
+
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About Me</a> |
+            <a href="hobbies.html">Hobbies</a> |
+            <a href="favorites.html">Favorites</a> |
+            <a href="goals.html">Goals</a> |
+            <a href="contact.html">Contact Me</a>
+        </nav>
+    </header>
+
+    <main class="contact-card">
+
+        <h2>Let's Connect</h2>
+        <p>Fill out the form below and send me a message.</p>
+
+        <form id="contact-form">
+
+            <!-- Name -->
+            <div class="form-group">
+                <label for="name">Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+            </div>
+
+            <!-- Gmail -->
+            <div class="form-group">
+                <label for="email">Gmail</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your Gmail"
+                    required
+                >
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label>Gender</label>
+
+                <div class="gender-options">
+
+                    <label>
+                        <input type="radio" name="gender" value="Male" required>
+                        Male
+                    </label>
+
+                    <label>
+                        <input type="radio" name="gender" value="Female">
+                        Female
+                    </label>
+
+                    <label>
+                        <input type="radio" name="gender" value="Gay">
+                        Gay
+                    </label>
+
+                    <label>
+                        <input type="radio" name="gender" value="Lesbian">
+                        Lesbian
+                    </label>
+
+                    <label>
+                        <input type="radio" name="gender" value="Other">
+                        Other
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- Strand -->
+            <div class="form-group">
+                <label for="strand">Strand</label>
+
+                <select id="strand" name="strand" required>
+                    <option value="">Select Strand</option>
+                    <option value="ICT">ICT</option>
+                    <option value="STEM">STEM</option>
+                    <option value="ABM">ABM</option>
+                    <option value="GAS">GAS</option>
+                    <option value="HUMSS">HUMSS</option>
+                </select>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+                <label for="message">Message</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Type your message here..."
+                    required
+                ></textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+
+                <button type="submit" class="send-btn">
+                    Send Message
+                </button>
+
+                <button type="reset" class="clear-btn">
+                    Clear Form
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            emailjs.sendForm(
+                "service_pjh0uuc",
+                "template_hwwchig",
+                this
+            )
+            .then(function() {
+
+                alert("Message sent successfully!");
+
+                document.getElementById("contact-form").reset();
+
+            })
+            .catch(function(error) {
+
+                alert("Message failed to send. Please try again.");
+
+                console.error("EmailJS Error:", error);
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

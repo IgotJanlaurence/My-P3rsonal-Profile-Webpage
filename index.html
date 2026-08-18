@@ -4,92 +4,337 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For You</title>
+<title>How Do You See Me?</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+
+    background:
+        radial-gradient(circle at 90% 10%, #063d72, transparent 30%),
+        radial-gradient(circle at 10% 90%, #001d3d, transparent 30%),
+        #020305;
+
+    color:white;
+    font-family:Arial, sans-serif;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.card{
+    width:100%;
+    max-width:850px;
+
+    padding:35px;
+
+    background:rgba(8,12,18,.96);
+
+    border:1px solid rgba(0,140,255,.35);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 0 60px rgba(0,120,255,.15),
+        0 30px 80px rgba(0,0,0,.7);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    background:#008cff;
+
+    border-radius:50%;
+
+    filter:blur(110px);
+
+    opacity:.13;
+
+    top:-100px;
+    right:-60px;
+}
+
+/* PROFILE */
+
+.profile{
+    width:105px;
+    height:105px;
+
+    border-radius:50%;
+
+    padding:4px;
+
+    background:linear-gradient(
+        135deg,
+        white,
+        #00aaff,
+        #174cff
+    );
+
+    box-shadow:0 0 30px rgba(0,140,255,.4);
+
+    margin-bottom:22px;
+
+    position:relative;
+    z-index:2;
+}
+
+.profile img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:4px solid #05080c;
+}
+
+/* UPLOAD */
+
+.upload{
+    color:#6dbfff;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+    margin-bottom:20px;
+
+    position:relative;
+    z-index:2;
+}
+
+.upload input{
+    margin-top:8px;
+
+    width:100%;
+    max-width:280px;
+
+    color:#9eb1c7;
+}
+
+/* TITLE */
+
+.label{
+    color:#45aaff;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+}
+
+h1{
+    font-size:clamp(43px,8vw,70px);
+
+    line-height:.95;
+
+    letter-spacing:-3px;
+
+    margin-bottom:18px;
+}
+
+h1 span{
+    color:#168cff;
+
+    text-shadow:0 0 25px rgba(0,140,255,.5);
+}
+
+.intro{
+    max-width:700px;
+
+    color:#9ba8b8;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    margin-bottom:28px;
+}
+
+/* ITEMS */
+
+.items{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+}
+
+.item{
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    min-height:78px;
+
+    padding:14px;
+
+    border-radius:17px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    transition:.25s;
+}
+
+.item:hover{
+    transform:translateY(-4px);
+
+    background:rgba(0,130,255,.08);
+
+    border-color:rgba(0,140,255,.35);
+}
+
+.icon{
+    width:40px;
+    height:40px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:12px;
+
+    background:rgba(0,130,255,.1);
+
+    color:#55b6ff;
+
+    font-size:20px;
+}
+
+.item small{
+    display:block;
+
+    color:#5d6c7e;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    margin-bottom:5px;
+}
+
+.item p{
+    color:#edf5ff;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    line-height:1.4;
+}
+
+/* QUOTE */
+
+.quote{
+    display:flex;
+
+    gap:10px;
+
+    margin-top:24px;
+
+    padding:20px;
+
+    border-left:2px solid #168cff;
+
+    background:linear-gradient(
+        90deg,
+        rgba(0,130,255,.08),
+        transparent
+    );
+
+    border-radius:0 15px 15px 0;
+}
+
+.quote span{
+    color:#168cff;
+
+    font-size:35px;
+
+    line-height:.6;
+}
+
+.quote p{
+    color:#b8c4d3;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    font-style:italic;
+}
+
+footer{
+    margin-top:22px;
+
+    text-align:center;
+
+    color:#465365;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+}
+
+/* PHONE */
+
+@media(max-width:600px){
+
+    body{
+        padding:12px;
     }
 
-    body {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #0b0f14;
-        color: white;
-        padding: 20px;
+    .card{
+        padding:24px 17px;
+
+        border-radius:24px;
     }
 
-    .card {
-        width: 100%;
-        max-width: 600px;
-        padding: 40px;
-        border-radius: 25px;
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(255,255,255,0.12);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        backdrop-filter: blur(15px);
-        animation: appear 1s ease;
+    .profile{
+        width:90px;
+        height:90px;
     }
 
-    .top {
-        color: #8b9bb4;
-        font-size: 13px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        margin-bottom: 18px;
+    .items{
+        grid-template-columns:1fr;
     }
 
-    h1 {
-        font-size: 38px;
-        margin-bottom: 20px;
+    h1{
+        font-size:46px;
     }
 
-    .line {
-        width: 55px;
-        height: 3px;
-        background: white;
-        border-radius: 10px;
-        margin-bottom: 25px;
-    }
+}
 
-    p {
-        color: #c7ccd4;
-        font-size: 16px;
-        line-height: 1.8;
-    }
-
-    .quote {
-        margin-top: 30px;
-        padding: 18px;
-        border-left: 3px solid #8b9bb4;
-        background: rgba(255,255,255,0.04);
-        color: #e8ebef;
-        font-style: italic;
-        line-height: 1.6;
-    }
-
-    .footer {
-        margin-top: 30px;
-        color: #707985;
-        font-size: 12px;
-        letter-spacing: 1px;
-    }
-
-    @keyframes appear {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 </style>
 </head>
 
@@ -97,32 +342,281 @@
 
 <div class="card">
 
-    <div class="top">A little reminder</div>
+    <!-- YOUR PHOTO -->
 
-    <h1>Keep Going.</h1>
+    <div class="profile">
 
-    <div class="line"></div>
+        <img id="myPhoto"
+             src=""
+             alt="My Photo"
+             style="display:none;">
 
-    <p>
-        You don't need to have everything figured out right now.
-        Take your time, focus on what matters, and keep becoming
-        a better version of yourself.
+    </div>
+
+
+    <div class="upload">
+
+        📷 Choose your picture
+
+        <br>
+
+        <input
+            type="file"
+            accept="image/*"
+            onchange="loadPhoto(event)"
+        >
+
+    </div>
+
+
+    <!-- INTRODUCTION -->
+
+    <p class="label">
+        A LITTLE PICTURE OF ME
     </p>
 
-    <div class="quote">
-        No distractions. No overthinking. No unnecessary noise.
-        Just you, your thoughts, and the things you love creating.
+
+    <h1>
+        How do I<br>
+        <span>see myself?</span>
+    </h1>
+
+
+    <p class="intro">
+
+        How do I see myself?
+
+        Maybe not as someone who has everything figured out,
+        but as someone who is still learning, growing,
+        making mistakes, and quietly becoming better.
+
+        I see myself through the little things I enjoy,
+        the moments that make me feel at peace,
+        the things that inspire me,
+        and the experiences that slowly shape who I am.
+
+        I don't always have the right words to explain myself,
+        but these little things somehow describe a part of me.
+
+    </p>
+
+
+    <!-- PERSONAL DETAILS -->
+
+    <div class="items">
+
+
+        <div class="item">
+
+            <div class="icon">🎨</div>
+
+            <div>
+
+                <small>COLOUR</small>
+
+                <p>
+                    Black & Blue —
+                    calm, deep, simple, and mysterious.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="icon">♡</div>
+
+            <div>
+
+                <small>FEELING</small>
+
+                <p>
+                    Quiet determination —
+                    soft-hearted but still trying.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="icon">♫</div>
+
+            <div>
+
+                <small>SONG</small>
+
+                <p>
+                    Anchor —
+                    something familiar and comforting.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="icon">☔</div>
+
+            <div>
+
+                <small>WEATHER</small>
+
+                <p>
+                    Rainy evening —
+                    peaceful, quiet, and reflective.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="icon">✦</div>
+
+            <div>
+
+                <small>SEASON</small>
+
+                <p>
+                    Rainy season —
+                    slow moments and peaceful thoughts.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="icon">✿</div>
+
+            <div>
+
+                <small>FLOWER</small>
+
+                <p>
+                    Blue hydrangea —
+                    quiet beauty with meaning.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="icon">~</div>
+
+            <div>
+
+                <small>SCENT</small>
+
+                <p>
+                    Fresh rain —
+                    clean, calm, and nostalgic.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="item">
+
+            <div class="icon">🍗</div>
+
+            <div>
+
+                <small>FOOD</small>
+
+                <p>
+                    Chicken adobo —
+                    simple, familiar, and comforting.
+                </p>
+
+            </div>
+
+        </div>
+
+
     </div>
 
-    <div class="footer">
-        — made with patience & code
+
+    <!-- MESSAGE -->
+
+    <div class="quote">
+
+        <span>“</span>
+
+        <p>
+
+            I may be quiet, but there is always
+            something going on inside my mind.
+
+            I overthink, I make mistakes,
+            I learn, and I keep moving forward.
+
+            I'm still figuring things out,
+            still discovering who I am,
+            and still learning how to become
+            someone I'm proud of.
+
+            I don't need to be perfect.
+
+            I just want to keep growing,
+            keep creating,
+            and keep becoming better
+            than the person I was yesterday.
+
+        </p>
+
     </div>
+
+
+    <footer>
+
+        BLACK × BLUE • JUST FOR FUN • STILL BECOMING
+
+    </footer>
+
 
 </div>
 
-</body>
-</html>     
-    
-    
 
-    
+<script>
+
+function loadPhoto(event){
+
+    const image =
+        document.getElementById("myPhoto");
+
+    const file =
+        event.target.files[0];
+
+    if(file){
+
+        image.src =
+            URL.createObjectURL(file);
+
+        image.style.display =
+            "block";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
